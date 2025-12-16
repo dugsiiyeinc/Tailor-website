@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* -----------------------------
+   THEME — all variables here
+------------------------------ */
+
+@custom-variant dark (&:where( .dark, .dark * ));
+
+@theme {
+  --color-grey-15: #262625;
+  --color-white-97: #f7f7f8;
+  --color-white-95: #f1f1f3;
+  --color-white-99: #fcfcfd;
+  --font-dmSans: "DM Sans", sans-serif;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply font-dmSans text-grey-15 bg-white-97;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply px-10 md:px-8 mx-auto sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1130px] 2xl:max-w-[1380px];
+  }
+  button {
+    @apply cursor-pointer block;
+  }
+  p {
+    @apply text-sm md:text-base lg:text-lg leading-normal;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold text-balance leading-tight;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  h4 {
+    @apply text-2xl lg:text-[22px];
+  }
+}
+
+@layer components {
+  .bg{
+    @apply bg-linear-to-r from-blue-700 via-cyan-600 to-cyan-400
+  }
+  .play-btn {
+    animation: 2s pulseAni ease infinite;
+  }
+  @keyframes pulseAni {
+    0% {
+      box-shadow: 0 0 0 white;
+    }
+    100% {
+      box-shadow: 0 0 0 20px transparent;
+    }
+  }
+}
+
+/* header */
+.navbar{
+  @apply sm:hidden fixed top-0 left-0 bg-white dark:bg-gray-800 w-full h-screen flex flex-col items-center justify-center -translate-x-full transition-transform duration-500 z-40
+}
+.navbar.active{
+  @apply translate-x-0
+}
