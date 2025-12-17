@@ -64,11 +64,11 @@ const Testimonials = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex items-center justify-center  gap-5">
-          <button className="hover:bg-white/10 w-12 h-12 flex items-center justify-center rounded-xl dark:text-white-95 transition prev-btn">
+        <div className="flex items-center justify-center  mt-8 gap-5">
+          <button className="hover:bg-gray-200 dark:hover:bg-white/10 w-12 h-12 flex items-center justify-center rounded-xl dark:text-white-95 transition prev-btn">
             <ArrowLeft />
           </button>
-          <button className="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-white/10 dark:text-white-95 transition next-btn">
+          <button className="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-gray-200 dark:hover:bg-white/10 dark:text-white-95 transition next-btn">
             <ArrowRight />
           </button>
         </div>

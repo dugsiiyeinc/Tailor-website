@@ -1,4 +1,6 @@
-import { Award, CheckCircle, Crown, Layers, Palette, Ruler, Scissors, Settings, Shirt, User } from "lucide-react"
+import { Award, CheckCircle, Crown, Facebook, Layers, Linkedin, Mail, MapPin, Palette, Phone, Ruler, Scissors, Settings, Shirt, Twitter, User } from "lucide-react"
+import { FaFacebookSquare, FaLinkedinIn, FaTiktok } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 
 
 export const navItems=[
@@ -132,3 +134,58 @@ export const testimonialsSection = [
     image: '/images/laftagareen.png',
   },
 ]
+
+export const contactInfo = [
+  {
+    id: 1,
+    icon: Mail,
+    label: "hello@TailorShop.com",
+  },
+  {
+    id: 2,
+    icon: Phone,
+    label: "+252 619999999",
+  },
+  {
+    id: 3,
+    icon: MapPin,
+    label: "Banadir, Digfeer Road",
+  },
+];
+
+
+export const footerLists = [
+  {
+    id: 1,
+    title: "Home",
+    links: [
+      { label: "Our Services" },
+      { label: "Why Choose us" },
+      { label: "Our Testimonials" },
+    ],
+  },
+  {
+    id: 2,
+    title: "About Us",
+    links: [
+      { label: "Company" },
+      { label: "Achievements" },
+      { label: "Our Goals" },
+    ],
+  },
+];
+
+export const socialIcons = [
+  {
+    id: 1,
+    icon: FaFacebookSquare,
+  },
+  {
+    id: 2,
+    icon: FaXTwitter,
+  },
+  {
+    id: 3,
+    icon: FaTiktok,
+  },
+];
