@@ -156,7 +156,6 @@ const ProfilePage= () => {
   try {
     setLoading(true)
 
-    // 1️⃣ Re-authenticate user
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email: user.email,
       password: currentPassword,
@@ -166,7 +165,6 @@ const ProfilePage= () => {
       throw new Error("Current password is incorrect")
     }
 
-    // 2️⃣ Update password
     const { error: updateError } = await supabase.auth.updateUser({
       password: newPassword,
     })
@@ -175,7 +173,6 @@ const ProfilePage= () => {
 
     toast.success("Password updated successfully 🎉")
 
-    // Clear fields
     setCurrentPassword("")
     setNewPassword("")
     setConfirmPassword("")
@@ -214,10 +211,9 @@ const ProfilePage= () => {
         </div>
 
 
+        {/* Profile mode */}
         {isProfileMode && (
           <form onSubmit={handleSubmit} className="space-y-6">
-
-            {/* Avatar */}
             <div className="flex flex-col items-center space-y-4 bg py-3 rounded-xl justify-center">
               <div className="relative group">
                 <div className="w-18 h-18 rounded-full overflow-hidden border-4 border-gray-200 shadow-md">
@@ -251,7 +247,6 @@ const ProfilePage= () => {
               </div>
             </div>
 
-            {/* Username */}
             <div>
               <label className="text-sm font-medium text-gray-700 dark:text-gray-200">
                 Username
@@ -268,8 +263,6 @@ const ProfilePage= () => {
                 />
               </div>
             </div>
-
-            {/* Email (read only) */}
             <div>
               <label className="text-sm font-medium text-gray-700 dark:text-gray-200">
                 Email
@@ -285,8 +278,6 @@ const ProfilePage= () => {
                 />
               </div>
             </div>
-
-            {/* Save */}
             <button disabled={loading} className="w-full bg flex items-center justify-center gap-2 p-2 text-white/97 rounded-md">
               <Save size={18} className=""/>
               <span>{loading ? 'Saving...': 'Save Changes'}</span>
@@ -294,7 +285,7 @@ const ProfilePage= () => {
           </form>
         )}
 
-        {/* ───────── Change Password Mode ───────── */}
+        {/* Change password mode */}
         {!isProfileMode && (
           <form onSubmit={handleChangePassword} className="space-y-4">
 

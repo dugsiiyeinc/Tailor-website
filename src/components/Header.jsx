@@ -1,6 +1,6 @@
 import { Bell, ChevronDown, LogOut, Menu, Moon, Package, ShoppingCart, Sun, User, X } from "lucide-react"
 import { Link } from "react-router"
-import { dropdownItems, navItems } from "../contstants/data"
+import {  navItems } from "../contstants/data"
 import { useState } from "react"
 import { useTheme } from "../contexts/ThemeContext"
 import { useAuth } from "../contexts/AuthContext"
@@ -150,26 +150,26 @@ const Header = () => {
                 isLoggedIn ? (
                   <>
 
-                     <Link
-                                    to={'/profile'}
-                                    onClick={handleClick}
-                                    className="w-full flex items-center p-3 justify-center hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all duration-300 cursor-pointer"
-                                  >
-                                  Profile
-                                  </Link>
-                                  <Link
-                                    to={'/view-orders'}
-                                    onClick={handleClick}
-                                    className="w-full flex items-center p-3 justify-center hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all duration-300 cursor-pointer"
-                                  >
-                                    View Orders
-                                  </Link>
-                                  <button
-                                    onClick={()=> (handleClick(), logout())}
-                                    className="bg hover:opacity-90 transition-all duration-300 rounded-lg text-center text-white max-w-40 w-full text-lg  py-2"
-                                  >
-                                   Sign out
-                                  </button>
+                   <Link
+                        to={'/profile'}
+                        onClick={handleClick}
+                          className="w-full flex items-center p-3 justify-center hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all duration-300 cursor-pointer"
+                    >
+                      Profile
+                   </Link>
+                   <Link
+                     to={'/view-orders'}
+                      onClick={handleClick}
+                      className="w-full flex items-center p-3 justify-center hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all duration-300 cursor-pointer"
+                    >
+                      View Orders
+                    </Link>
+                    <button
+                      onClick={()=> (handleClick(), logout())}
+                      className="bg hover:opacity-90 transition-all duration-300 rounded-lg text-center text-white max-w-40 w-full text-lg  py-2"
+                    >
+                      Sign out
+                   </button>
                   </>
                 ):(
 
