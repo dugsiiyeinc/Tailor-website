@@ -101,3 +101,7 @@
     }
   }
 }
+
+#pants:checked ~ .check{
+  @apply backdrop-opacity-100;
+}
