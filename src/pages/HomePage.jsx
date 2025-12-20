@@ -12,7 +12,6 @@ const HomePage = () => {
       <ServicesSection/>
       <WhyCooseUs/>
       <TestimonialsSection/>
-      <Footer/>
     </>
   )
 }

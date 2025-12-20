@@ -8,8 +8,10 @@ import { useAuth } from "../contexts/AuthContext"
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
   const { isLoggedIn,profile, logout } = useAuth()
   const { theme, setTheme } = useTheme()
+
 
   const isDark = theme === 'dark';
   const Icon = isDark ? Sun : Moon;
@@ -22,7 +24,7 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen)
   }
   return (
-    <header className="fixed right-0 bg-white dark:bg-gray-900 dark:text-white transition-all duration-300 w-full py-5 shadow-md z-40">
+    <header className="fixed right-0 bg-white dark:bg-gray-900 dark:text-white transition-all duration-300 w-full py-5 shadow-md z-50">
       <div >
         <div className="container flex items-center justify-between">
           {/* logo */}
@@ -47,12 +49,6 @@ const Header = () => {
             >
               <Icon size={18} />
             </button>
-            <Link 
-              to={'/cart-page'}
-              className='relative p-2 dark:text-white/70 hover:text-cyan-600 dark:hover:text-white dark:hover:bg-white/10 rounded-2xl transition-all duration-300 group'
-            >
-              <ShoppingCart className='h-6 w-6' />
-            </Link>
             {
               isLoggedIn ? (
                 <>
@@ -73,7 +69,7 @@ const Header = () => {
                       isDropdownOpen && (
                         <>
 
-                          <div className="fiex inset-0 z-40" onClick={()=> setIsDropdownOpen(false)}>
+                          <div className="fiex inset-0 z-50" onClick={()=> setIsDropdownOpen(false)}>
                             <div className="absolute top-full mt-2 right-0 w-64 bg-white dark:bg-gray-800/90 backdrop-blur-xl border border-gray-700 rounded-xl z-50 overflow-hidden">
                                <div className="p-2">
                                   <Link

@@ -27,7 +27,7 @@ const ProductsGrid = ({selectedCategory, selectedType,searchTerm,sortOrder}) => 
         <Link
           to={`${item.id}`}
           key={item.id}
-          className="relative border-2 rounded-xl h-64 dark:border-white/10 overflow-hidden"
+          className="relative border-2 rounded-xl h-64 dark:border-white/10 overflow-hidden hover:-translate-y-2 hover:scale-105 transition-all duration-300"
         >
           <img src={item.image} alt="" className="absolute inset-0 w-full h-full object-cover"/>
           <div className="absolute inset-0 bg-black/70 z-10"></div>

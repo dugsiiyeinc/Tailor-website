@@ -16,7 +16,7 @@ import { supabase } from "../lib/supabase"
 const ProfilePage= () => {
 
   const [isProfileMode, setIsProfileMode] = useState(true)
-  const [username, setUsername] = useState("Jamal")
+  const [username, setUsername] = useState("jamal")
   const [loading, setLoading] = useState(false);
   const [avatar, setAvatar] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null)

@@ -10,7 +10,6 @@ import ViewOrders from "../pages/ViewOrders";
 import ProtectedRoute from "../components/ProtectedRoute";
 import ProfilePage from "../pages/ProfilePage";
 import UnAuthenticatedRoute from "../components/UnAuthenticatedRoute";
-import CartPage from "../pages/CartPage";
 import SingleProduct from "../components/SingleProduct";
 
 export const router=createBrowserRouter([
@@ -38,10 +37,6 @@ export const router=createBrowserRouter([
             {
                 path:'about-us',
                 element:<AboutUs/>
-            },
-            {
-                path:'cart-page',
-                element:<CartPage/>
             },
             {
                 path:'profile',

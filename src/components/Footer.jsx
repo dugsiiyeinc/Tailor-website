@@ -5,7 +5,7 @@ import { contactInfo, footerLists, socialIcons } from '../contstants/data'
 
 const Footer = () => {
   return (
-    <footer className='pt-14 border-t-2 border-gray-200 dark:border-white/10 dark:text-white/95 mt-10'>
+    <footer className='pt-14 border-t-2 bg-white dark:bg-gray-900 border-gray-200 dark:border-white/10 dark:text-white/95'>
         <div 
         className='p-8 md:p-10'
         >
