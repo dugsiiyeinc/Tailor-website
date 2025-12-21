@@ -4,6 +4,7 @@ import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation } from 'swiper/modules'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router'
 
 
 const HeroSection = () => {
@@ -59,8 +60,7 @@ const HeroSection = () => {
               <h1 className='text-4xl md:text-6xl font-bold mb-4'>{item.h1}</h1>
               <p className='text-lg md:text-xl text-white/55'>{item.p}</p>
               <div className='flex flex-col md:flex-row gap-4 m-4'>
-                <button className='bg px-4 py-2 text-lg rounded-md hover:opacity-90 transition-all duration-300'>{item.btn1}</button>
-                <button className='border border-cyan-400 hover:bg-linear-to-r from-blue-700 via-cyan-600 to-cyan-400 px-4 py-2 text-lg rounded-md transition-all duration-500'>{item.btn2}</button>
+                <Link to={'/shop'} className='bg px-4 py-2 text-lg rounded-md hover:opacity-90 transition-all duration-300'>{item.btn1}</Link>
               </div>
             </div>
           </div>

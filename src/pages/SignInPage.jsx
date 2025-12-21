@@ -32,7 +32,7 @@ const SignInPage = () => {
                     setSuccess(true)
                     setTimeout(() => {
                         navigate('/sign-in')
-                    }, 200);
+                    }, 2000);
                     
                 } catch (error) {
                     setError(error.message || 'failed to create an account')
@@ -63,9 +63,9 @@ const SignInPage = () => {
 
     if(success){
         return(
-        <div className="pt-20 min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="pt-20 min-h-screen flex items-center justify-center px-4">
           <div className="max-w-md w-full text-center">
-           <div className="bg-white rounded-lg shadow-md p-8">
+           <div className="border border-gray-200 dark:text-white-95 dark:border-white/10 rounded-lg shadow-md p-8">
              <div className="text-green-500 text-5xl mb-4">✓</div>
              <h2 className="text-2xl font-bold mb-2">Account Created!</h2>
              <p className="text-gray-600 mb-4">
@@ -82,8 +82,8 @@ const SignInPage = () => {
 
     return (
         <section className='grid w-full py-8 place-items-center'>
-            <div className='max-w-90 sm:max-w-107.5  bg-white p-8 rounded-2xl shadow-lg '>
-                <div className="relative flex h-12 mb-6 border border-gray-300 rounded-full overflow-hidden">
+            <div className='max-w-90 sm:max-w-107.5  border border-gray-200 dark:border-white/10 dark:text-white-95 p-8 rounded-2xl shadow-lg '>
+                <div className="relative flex h-12 mb-6 border border-gray-300 dark:border-white/10 rounded-full overflow-hidden">
                     <div
                         className={`bg absolute top-0 h-full w-1/2 rounded-full transition-all duration-300
                          ${isLoginMode ? "left-0" : "left-1/2"} z-0`}
@@ -92,7 +92,7 @@ const SignInPage = () => {
                     <button
                         onClick={() => setIsLoginMode(true)}
                         className={`w-1/2 text-lg font-medium z-10 transition-colors duration-300
-                         ${isLoginMode ? "text-white" : "text-black"}`}
+                         ${isLoginMode ? "text-white" : "text-black dark:text-white-95"}`}
                     >
                         Sign In
                     </button>
@@ -100,7 +100,7 @@ const SignInPage = () => {
                     <button
                         onClick={() => setIsLoginMode(false)}
                         className={`w-1/2 text-lg font-medium z-10 transition-colors duration-300
-                         ${!isLoginMode ? "text-white" : "text-black"}`}
+                         ${!isLoginMode ? "text-white" : "text-black dark:text-white-95"}`}
                     >
                         Sign Up
                     </button>
@@ -110,7 +110,7 @@ const SignInPage = () => {
                 {/* title */}
                 <div className='flex flex-col justify-center mb-4'>
                     <h1 className='text-3xl font-semibold text-center'>{isLoginMode ? 'Sign in' : 'Create an account'}</h1>
-                    <p className='text-sm text-gray-700 tracking-tighter text-center pt-2'>{isLoginMode ?
+                    <p className='text-sm text-gray-700 dark:text-white-95 tracking-tighter text-center pt-2'>{isLoginMode ?
                         'Sign in to manage your orders, appointments, and measurements.'
                         : 'Join us to place orders, save your measurements, and get personalized tailoring services.'}</p>
                 </div>
@@ -132,7 +132,7 @@ const SignInPage = () => {
                                     value={username}
                                     onChange={(e)=>setUsername(e.target.value)}
                                     placeholder='name'
-                                    className='w-full border-2 px-3 py-2 border-gray-300 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
+                                    className='w-full border-2 px-3 py-2 border-gray-300 dark:border-white/10 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
                                     required
                                 />
                             </div>
@@ -147,7 +147,7 @@ const SignInPage = () => {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             placeholder='email address'
-                            className='w-full border-2 px-3 py-2 border-gray-300 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
+                            className='w-full border-2 px-3 py-2 border-gray-300 dark:border-white/10 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
                             required
                         />
                     </div>
@@ -158,7 +158,7 @@ const SignInPage = () => {
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             placeholder='password'
-                            className='w-full border-2 px-3 py-2 border-gray-300 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
+                            className='w-full border-2 px-3 py-2 border-gray-300 dark:border-white/10 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
                             required
                         />
                     </div>
@@ -172,7 +172,7 @@ const SignInPage = () => {
                                     value={confirmPassword}
                                     onChange={e => setConfirmPassword(e.target.value)}
                                     placeholder='confrim password'
-                                    className='w-full border-2 px-3 py-2 border-gray-300 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
+                                    className='w-full border-2 px-3 py-2 border-gray-300 dark:border-white/10 rounded-md focus:outline-none focus:border-cyan-500 placeholder-gray-400'
                                     required
                                 />
                             </div>
@@ -191,7 +191,7 @@ const SignInPage = () => {
                     </button>
 
                     {/* switch link */}
-                    <p className='text-sm text-center text-gray-600'>
+                    <p className='text-sm text-center text-gray-600 dark:text-white-95'>
                         {isLoginMode ? 'Dont have an account' : "Already have an account"}?
                         <Link className='text-cyan-700' onClick={() => setIsLoginMode(!isLoginMode)}>{isLoginMode ? 'Signup' : 'Signin'}</Link>
                     </p>
