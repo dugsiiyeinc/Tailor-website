@@ -9,7 +9,7 @@ import {
   EyeClosed
 } from "lucide-react"
 import { useAuth } from "../contexts/AuthContext"
-import { getUserProfile } from "../lib/Auth"
+import { getUserProfile } from "../lib/auth"
 import toast from "react-hot-toast"
 import { supabase } from "../lib/supabase"
 
