@@ -18,7 +18,7 @@ const WhyCooseUs = () => {
                     </span>
                     <h1 className='text-4xl font-black mb-2'>Expert Craftsmanship</h1>
                     <p className='text-gray-600 dark:text-gray-300 leading-relaxed'>Our experienced tailors deliver exceptional quality with attention to every detail.</p>
-                    <Link className='bg px-4 py-2 max-w-40 text-center rounded-md hover:opacity-90 transition-all duration-300 text-white-95'>Order Now</Link>
+                    <Link to={'/shop'} className='bg px-4 py-2 max-w-40 text-center rounded-md hover:opacity-90 transition-all duration-300 text-white-95'>Order Now</Link>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@ const WhyCooseUs = () => {
                     </span>
                     <h1 className='text-4xl font-black mb-2'>Perfect Fit Guarantee</h1>
                     <p className='text-gray-600 dark:text-gray-300 leading-relaxed max-w-80'>Every garment is measured, fitted, and finished for a flawless fit.</p>
-                    <Link className='bg px-4 py-2 max-w-40 text-center rounded-md hover:opacity-90 transition-all duration-300 text-white-95'>Explore Now</Link>
+                    <Link to={'/shop'} className='bg px-4 py-2 max-w-40 text-center rounded-md hover:opacity-90 transition-all duration-300 text-white-95'>Explore Now</Link>
                 </div>
                 <div className='relative'>
                     <img src="/images/bg-5.png" alt="" className=' w-full h-78 object-cover'/>
