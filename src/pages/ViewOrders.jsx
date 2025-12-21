@@ -11,7 +11,7 @@ const ViewOrders = () => {
       const { data, error } = await supabase
         .from("orders")
         .select("*")
-        .eq("id", user.id)
+        .eq("user_id", user.id)
         .order("created_at", { ascending: false });
 
       if (!error) setOrders(data);

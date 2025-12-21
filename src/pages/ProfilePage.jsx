@@ -15,6 +15,7 @@ import { supabase } from "../lib/supabase"
 
 const ProfilePage= () => {
 
+  const { profile }=useAuth()
   const [isProfileMode, setIsProfileMode] = useState(true)
   const [username, setUsername] = useState("jamal")
   const [loading, setLoading] = useState(false);
@@ -217,14 +218,18 @@ const ProfilePage= () => {
             <div className="flex flex-col items-center space-y-4 bg py-3 rounded-xl justify-center">
               <div className="relative group">
                 <div className="w-18 h-18 rounded-full overflow-hidden border-4 border-gray-200 shadow-md">
+                  {avatarUrl ? (
+
                   <img
                     src={
-                      avatarUrl ||
-                      "https://ui-avatars.com/api/?name=User&background=FF9500&color=fff"
+                      avatarUrl
                     }
                     alt="profile"
                     className="w-full h-full object-cover"
                   />
+                  ):(
+                    <span className='text-white font-bold text-sm'>{profile?.username[0].toUpperCase()}</span>
+                  )}
                 </div>
 
                 <label

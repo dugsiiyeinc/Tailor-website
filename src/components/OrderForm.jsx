@@ -3,12 +3,12 @@ import { initialState, OrderReducer } from "../Reducer/OrderReducer";
 import PaymentSection from "./PaymentSection";
 import { products } from "../contstants/data";
 import { useParams } from "react-router";
+import toast from "react-hot-toast";
 
-
-const OrderForm = ({setIsPaymentStep}) => {
+const OrderForm = ({ setIsPaymentStep }) => {
   const [state, dispatch] = useReducer(OrderReducer, initialState);
   const { productId } = useParams();
-  const productInfo = products.find(product => product.id == productId);
+  const productInfo = products.find((product) => product.id == productId);
 
   useEffect(() => {
     setIsPaymentStep(state.showPayment);
@@ -24,6 +24,16 @@ const OrderForm = ({setIsPaymentStep}) => {
       field: e.target.name,
       value: e.target.value === "" ? "" : Number(e.target.value),
     });
+  };
+
+  const validateFields = (fields) => {
+    for (const field of fields) {
+      if (!state[field] || state[field] <= 0) {
+        toast.error("Please fill all measurements");
+        return false;
+      }
+    }
+    return true;
   };
 
   return (
@@ -60,11 +70,22 @@ const OrderForm = ({setIsPaymentStep}) => {
 
           <div className="flex justify-end">
             <button
-              onClick={() =>
+              onClick={() => {
+                const jacketFields = [
+                  "chest",
+                  "shoulder_width",
+                  "sleeve_length",
+                  "sleeve_width",
+                  "jacket_length",
+                  "neck",
+                ];
+
+                if (!validateFields(jacketFields)) return;
+
                 isJacketOnly
                   ? dispatch({ type: "show-payment" })
-                  : dispatch({ type: "next-step" })
-              }
+                  : dispatch({ type: "next-step" });
+              }}
               className="bg-cyan-600 hover:bg-cyan-700 transition text-white px-4 py-2 rounded-md"
             >
               {isJacketOnly ? "Order" : "Next"}
@@ -114,7 +135,20 @@ const OrderForm = ({setIsPaymentStep}) => {
             )}
 
             <button
-              onClick={() => dispatch({ type: "show-payment" })}
+              onClick={() => {
+                const pantFields = [
+                  "wrist",
+                  "pant_length",
+                  "rise",
+                  "thigh",
+                  "knee",
+                  "ankle",
+                ];
+
+                if (!validateFields(pantFields)) return;
+
+                dispatch({ type: "show-payment" });
+              }}
               className="bg-cyan-600 hover:bg-cyan-700 transition text-white px-4 py-2 rounded-md"
             >
               Order
@@ -123,13 +157,9 @@ const OrderForm = ({setIsPaymentStep}) => {
         </div>
       )}
 
-      {state.showPayment && (
-          <PaymentSection/>
-       )}
+      {state.showPayment && <PaymentSection />}
     </div>
   );
 };
 
 export default OrderForm;
-
-

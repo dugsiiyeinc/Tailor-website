@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { products } from "../contstants/data";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import toast from "react-hot-toast";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../contexts/AuthContext";
@@ -9,6 +9,13 @@ const PaymentSection = () => {
   const { user } = useAuth();
   const [isCashMode, setIsCashMode] = useState(true);
   const [cashMethod, setCashMethod] = useState("zaad");
+
+  const [phone, setPhone] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvc, setCvc] = useState("");
+
+  const navigate = useNavigate();
 
   const { productId } = useParams();
   const productInfo = products.find((product) => product.id == productId);
@@ -35,14 +42,46 @@ const PaymentSection = () => {
     return today.toISOString();
   };
 
-  const cashServices=["zaad", "sahal", "evc"]
+  const cashServices = ["zaad", "sahal", "evc"];
 
   const confirmOrder = async () => {
     const completionDate = getCompletionDate(category);
 
+    const { data: existingOrder, error: checkError } = await supabase
+      .from("orders")
+      .select("id")
+      .eq("user_id", user.id)
+      .eq("name", productInfo.name)
+      .eq("status", "Pending")
+      .maybeSingle();
+
+    if (checkError) {
+      toast.error("Error checking existing orders");
+      return;
+    }
+
+    if (existingOrder) {
+      toast.error(
+        "You already have a pending order for this item. Please wait until it is completed."
+      );
+      return;
+    }
+
+    if (isCashMode) {
+      if (!phone.trim()) {
+        toast.error("Phone number is required");
+        return;
+      }
+    } else {
+      if (!cardNumber || !expiry || !cvc) {
+        toast.error("Please fill all card details");
+        return;
+      }
+    }
+
     const { error } = await supabase.from("orders").insert([
       {
-        id: user.id,
+        user_id: user.id,
         name: productInfo.name,
         price: totalPrice,
         quantity,
@@ -61,6 +100,10 @@ const PaymentSection = () => {
         position: "top-right",
       });
     }
+
+    setTimeout(() => {
+      navigate("/view-orders");
+    }, 2000);
   };
 
   const getTypeColor = (type) => {
@@ -163,6 +206,8 @@ const PaymentSection = () => {
 
             <input
               type="number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               placeholder="25261..."
               className="border-2 border-gray-200 dark:border-white/10 focus:outline-none p-2 rounded-md mt-2"
             />
@@ -179,6 +224,8 @@ const PaymentSection = () => {
 
             <input
               placeholder="Card Number"
+              value={cardNumber}
+              onChange={(e) => setCardNumber(e.target.value)}
               maxLength={19}
               className="w-full border dark:border-white/10 focus:outline-none p-2 rounded mb-3"
             />
@@ -188,21 +235,28 @@ const PaymentSection = () => {
                 placeholder="MM/YY"
                 maxLength={5}
                 inputMode="numeric"
+                value={expiry}
                 className="w-full border dark:border-white/10 focus:outline-none p-2 rounded"
+                required
                 onChange={(e) => {
                   let value = e.target.value.replace(/\D/g, "");
+
                   if (value.length >= 3) {
                     value = value.slice(0, 2) + "/" + value.slice(2, 4);
                   }
-                  e.target.value = value;
+
+                  setExpiry(value);
                 }}
               />
 
               <input
                 placeholder="CVC"
+                value={cvc}
+                onChange={(e) => setCvc(e.target.value)}
                 maxLength={3}
                 inputMode="numeric"
                 className="w-full border dark:border-white/10 focus:outline-none p-2 rounded"
+                required
               />
             </div>
 
